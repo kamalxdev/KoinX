@@ -5,6 +5,7 @@ import TradingViewWidget from "@/components/tradingViewWidget";
 import Link from "next/link";
 import Performance from "@/components/performance";
 import Fundamentals from "@/components/fundamentals";
+import Sentiment from "@/components/sentiment";
 
 
 const stocLinks = [
@@ -97,6 +98,9 @@ export default function Home() {
       <div className="relative border p-5 flex flex-col gap-11 ">
         <Performance />
         <Fundamentals />
+      </div>
+      <div className="relative border p-5">
+        <Sentiment />
       </div>
     </section>
   );
