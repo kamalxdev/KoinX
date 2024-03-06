@@ -5,28 +5,28 @@ import Image from "next/image";
 import { memo, useEffect, useState } from "react";
 
 function MainScreenTopBar() {
-  const [bitcoin, setBitcoin] = useState({} as any);
-  useEffect(() => {
-    axios
-      .get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin&x-cg-demo-api-key=CG-vZfVMwsnwxcFsiXyQCsWV4Nn"
-      )
-      .then((response) => {
-        const { data } = response;
-        setBitcoin((prev: any) => ({ ...prev, market: data[0] }));
-      })
-      .catch((error) => console.log(error));
-    // axios
-    //   .get(
-    //     "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=inr,usd&x-cg-demo-api-key=CG-vZfVMwsnwxcFsiXyQCsWV4Nn&include_24hr_change=true"
-    //   )
-    //   .then((response) => {
-    //     const { data } = response;
-    //     setBitcoin((prev:any) => ({ ...prev, Change: data["bitcoin"] }));
-    //   })
-    //   .catch((error) => console.log(error));
-  }, []);
-  console.log(bitcoin);
+  // const [bitcoin, setBitcoin] = useState({} as any);
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin&x-cg-demo-api-key=CG-vZfVMwsnwxcFsiXyQCsWV4Nn"
+  //     )
+  //     .then((response) => {
+  //       const { data } = response;
+  //       setBitcoin((prev: any) => ({ ...prev, market: data[0] }));
+  //     })
+  //     .catch((error) => console.log(error));
+  //   // axios
+  //   //   .get(
+  //   //     "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=inr,usd&x-cg-demo-api-key=CG-vZfVMwsnwxcFsiXyQCsWV4Nn&include_24hr_change=true"
+  //   //   )
+  //   //   .then((response) => {
+  //   //     const { data } = response;
+  //   //     setBitcoin((prev:any) => ({ ...prev, Change: data["bitcoin"] }));
+  //   //   })
+  //   //   .catch((error) => console.log(error));
+  // }, []);
+  // console.log(bitcoin);
 
   return (
     <section className=" ">

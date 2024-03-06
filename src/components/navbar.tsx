@@ -1,5 +1,6 @@
 import Image from "next/image";
-
+import { memo } from "react";
+import Link from "next/link";
 const navLinks = [
   {
     title: "Crypto Taxes",
@@ -15,7 +16,7 @@ const navLinks = [
   },
 ];
 
-export default function Navbar() {
+function Navbar() {
   return (
     <section className="flex items-center justify-between mx-10 text-xs font-semibold">
       <div className="">
@@ -24,7 +25,7 @@ export default function Navbar() {
     <div>
         <span className="inline-flex text-xs gap-7 mr-5">
             {navLinks.map((link) => {
-                return <a href={link.path} key={link.title} className="text-xs">{link.title}</a>
+                return <Link href={link.path} key={link.title} className="text-xs">{link.title}</Link>
     
             })}
         </span>
@@ -35,3 +36,8 @@ export default function Navbar() {
     </section>
   );
 }
+
+
+
+
+export default memo(Navbar);

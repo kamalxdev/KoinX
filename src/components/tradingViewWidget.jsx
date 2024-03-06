@@ -15,7 +15,6 @@ function TradingViewWidget() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  console.log("width: ",WindowWidth/2+WindowWidth*0.20);
   return (
     <SymbolOverview
       colorTheme="light"
@@ -25,7 +24,7 @@ function TradingViewWidget() {
       wickDownColor="#800080"
       symbols="COINBASE:BTCUSD|1D"
       chartOnly
-      width={Math.floor(WindowWidth/2+WindowWidth*0.10)}
+      width={Math.floor(WindowWidth/2+WindowWidth*0.13)}
       height="500"
       lineColor="#2962FF"
 

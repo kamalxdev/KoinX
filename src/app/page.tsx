@@ -1,10 +1,50 @@
-import Main from "@/components/main";
+// "use Client"
+
 import MainScreenTopBar from "@/components/mainScreentopbar";
 import TradingViewWidget from "@/components/tradingViewWidget";
+import Link from "next/link";
+
+const stocLinks = [
+  {
+    title: "Overview",
+    link: "/",
+    selected: true,
+  },
+  {
+    title: "Fundamentals",
+    link: "/",
+    selected: false,
+  },
+  {
+    title: "News Insights",
+    link: "/",
+    selected: false,
+  },
+  {
+    title: "Sentiments",
+    link: "/",
+    selected: false,
+  },
+  {
+    title: "Team",
+    link: "/",
+    selected: false,
+  },
+  {
+    title: "Technicals",
+    link: "/",
+    selected: false,
+  },
+  {
+    title: "Tokenomics",
+    link: "/",
+    selected: false,
+  },
+];
 export default function Home() {
   return (
-    <>
-      <div className="w-2/12 ml-8 my-3 text-xs text-light-grey/70 flex items-center justify-evenly">
+    <section className="w-8/12 ">
+      <div className="w-3/12 ml-8 my-3 text-xs text-light-grey/70 flex items-center justify-evenly">
         <p>Cryptocurrencies</p>
         <svg
           width="11"
@@ -33,10 +73,24 @@ export default function Home() {
 
         <p className="text-dark-grey">Bitcoin </p>
       </div>
-      <section className="w-8/12 border border-red-500 ml-10  p-5  ">
-            <MainScreenTopBar />
-            <TradingViewWidget />
-        </section>
-    </>
+      <div className="relative border border-red-500 ml-10  p-5  ">
+        <MainScreenTopBar />
+        <TradingViewWidget />
+      </div>
+      <div className="relative flex p-5  text-sm justify-evenly items-center">
+        {stocLinks.map((link, index) => {
+          return (
+            <Link
+              href={link.link}
+              className={link.selected?"underline underline-offset-8 decoration-2":"" }
+              key={index}
+              style={{ color: link.selected ? "#0141CF" : "#3E424A" }}
+            >
+              {link.title}{" "}
+            </Link>
+          );
+        })}
+      </div>
+    </section>
   );
 }
