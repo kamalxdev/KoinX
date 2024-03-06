@@ -4,6 +4,7 @@ import MainScreenTopBar from "@/components/mainScreentopbar";
 import TradingViewWidget from "@/components/tradingViewWidget";
 import Link from "next/link";
 import Performance from "@/components/performance";
+import Fundamentals from "@/components/fundamentals";
 
 
 const stocLinks = [
@@ -45,8 +46,8 @@ const stocLinks = [
 ];
 export default function Home() {
   return (
-    <section className="w-8/12 ">
-      <div className="w-3/12 ml-8 my-3 text-xs text-light-grey/70 flex items-center justify-evenly">
+    <section className="w-8/12 ml-8">
+      <div className="w-3/12  my-3 text-xs text-light-grey/70 flex items-center justify-evenly">
         <p>Cryptocurrencies</p>
         <svg
           width="11"
@@ -75,11 +76,11 @@ export default function Home() {
 
         <p className="text-dark-grey">Bitcoin </p>
       </div>
-      <div className="relative border border-red-500 ml-10  p-5  ">
+      <div className="relative border border-red-500 ml-2  p-5  ">
         <MainScreenTopBar />
         <TradingViewWidget />
       </div>
-      <div className="relative flex p-5 text-sm justify-evenly items-center">
+      <div className="relative font-medium border flex p-5 text-xs justify-start gap-7 items-center">
         {stocLinks.map((link, index) => {
           return (
             <Link
@@ -93,8 +94,9 @@ export default function Home() {
           );
         })}
       </div>
-      <div className="relative p-5 ml-10">
+      <div className="relative border p-5 flex flex-col gap-11 ">
         <Performance />
+        <Fundamentals />
       </div>
     </section>
   );
