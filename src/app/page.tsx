@@ -3,6 +3,8 @@
 import MainScreenTopBar from "@/components/mainScreentopbar";
 import TradingViewWidget from "@/components/tradingViewWidget";
 import Link from "next/link";
+import Performance from "@/components/performance";
+
 
 const stocLinks = [
   {
@@ -77,7 +79,7 @@ export default function Home() {
         <MainScreenTopBar />
         <TradingViewWidget />
       </div>
-      <div className="relative flex p-5  text-sm justify-evenly items-center">
+      <div className="relative flex p-5 text-sm justify-evenly items-center">
         {stocLinks.map((link, index) => {
           return (
             <Link
@@ -90,6 +92,9 @@ export default function Home() {
             </Link>
           );
         })}
+      </div>
+      <div className="relative p-5 ml-10">
+        <Performance />
       </div>
     </section>
   );

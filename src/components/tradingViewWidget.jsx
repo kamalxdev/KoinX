@@ -22,7 +22,7 @@ function TradingViewWidget() {
       downColor="#800080"
       borderDownColor="#800080"
       wickDownColor="#800080"
-      symbols="COINBASE:BTCUSD|1D"
+      symbols="COINBASE:BTCUSD|All"
       chartOnly
       width={Math.floor(WindowWidth/2+WindowWidth*0.13)}
       height="500"
