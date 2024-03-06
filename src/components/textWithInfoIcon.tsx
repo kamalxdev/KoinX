@@ -1,10 +1,10 @@
 import { memo } from "react"
 
 
-function TextWithInfoIcon({text}:{text: string}) {
+function TextWithInfoIcon({text, classname}:{text: string, classname?: string}) {
   return(
     <>
-    <span className="flex items-center" style={{ color: "#44475B" }}>
+    <span className={`flex items-center text-[#44475B] + ${classname}`}>
         <h1 className="mb-5 font-semibold text-sm">{text}</h1>
         <svg
           width="18"

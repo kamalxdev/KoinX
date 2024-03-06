@@ -58,7 +58,7 @@ function Fundamentals() {
   return (
     <div style={{ color: "#44475B" }}>
     <TextWithInfoIcon text="Fundamentals" />
-      <div className="flex gap-16 flex-wrap">
+      <div className="grid md:grid-cols-2 lg:grid-cols-2 grid-rows-subgrid   gap-16 ">
         <div className="text-xs">
           {stockFundamentals.map((item, index) => {
             if (index < 5) {

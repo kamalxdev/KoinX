@@ -1,47 +1,27 @@
 "use client";
 
-import axios from "axios";
+import useFetchData from "@/hooks/fetchData";
 import Image from "next/image";
-import { memo, useEffect, useState } from "react";
+import { memo } from "react";
 
 function MainScreenTopBar() {
-  // const [bitcoin, setBitcoin] = useState({} as any);
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin&x-cg-demo-api-key=CG-vZfVMwsnwxcFsiXyQCsWV4Nn"
-  //     )
-  //     .then((response) => {
-  //       const { data } = response;
-  //       setBitcoin((prev: any) => ({ ...prev, market: data[0] }));
-  //     })
-  //     .catch((error) => console.log(error));
-  //   // axios
-  //   //   .get(
-  //   //     "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=inr,usd&x-cg-demo-api-key=CG-vZfVMwsnwxcFsiXyQCsWV4Nn&include_24hr_change=true"
-  //   //   )
-  //   //   .then((response) => {
-  //   //     const { data } = response;
-  //   //     setBitcoin((prev:any) => ({ ...prev, Change: data["bitcoin"] }));
-  //   //   })
-  //   //   .catch((error) => console.log(error));
-  // }, []);
-  // console.log(bitcoin);
-
+  const market =  useFetchData("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin&x-cg-demo-api-key=CG-vZfVMwsnwxcFsiXyQCsWV4Nn"); 
+  const price = useFetchData("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=inr,usd&x-cg-demo-api-key=CG-vZfVMwsnwxcFsiXyQCsWV4Nn&include_24hr_change=true");
+  if (market.loading || price.loading) return <p>Loading...</p>;
+  if (market.error || price.error) return <p>Error fetching data</p>;
   return (
     <section className=" ">
-      <div className="relative flex justify-start items-center">
-        <span className="relative flex justify-start items-center">
-          <h1 className="font-semibold text-lg mx-2">Bitcoin</h1>
-          <p className="text-symbol-clr text-xs">BTC</p>{" "}
-        </span>
+      <span className="relative flex justify-start items-center">
+        <Image src={market?.data && market.data[0]?.image} alt={market?.data && market.data[0]?.id} width={40} height={40} />
+          <h1 className="font-semibold text-lg mx-2">{market?.data && market.data[0]?.name}</h1>
+          <p className="text-symbol-clr text-xs">{market?.data && (market.data[0]?.symbol)?.toUpperCase()}</p>{" "}
         <span className="text-xs ml-7 text-white bg-rank-clr rounded-md p-2">
           Rank #1
         </span>
-      </div>
+        </span>
       <div className="my-5">
         <span className="flex items-center">
-          <p className="font-semibold text-2xl mr-10">$46,953.04</p>
+          <p className="font-semibold text-2xl mr-10">${price.data && price.data?.bitcoin?.usd}</p>
           <p className="text-up-green flex items-center mr-3 text-sm gap-2">
             <svg
               width="9"
@@ -52,13 +32,13 @@ function MainScreenTopBar() {
             >
               <path d="M5.5 0L11 8H0L5.5 0Z" fill="#14B079" />
             </svg>
-            2.51%
+            {price.data && (price.data?.bitcoin?.usd_24h_change).toPrecision(4)}%
           </p>
           <p className="text-xs" style={{ color: "#768396" }}>
             (24H)
           </p>
         </span>
-        <p >₹39,42,343</p>
+        <p >₹{price.data && price.data?.bitcoin?.inr}</p>
       </div>
     </section>
   );

@@ -2,9 +2,9 @@ import { memo } from "react";
 
 function Performance() {
   return (
-    <div>
+    <div className="w-full">
       <h1 className="mb-5 font-semibold">Performance</h1>
-      <div className="flex flex-col text-xs gap-5 " style={{ color: "#44475B" }}>
+      <div className="flex flex-col text-xs gap-5 text-[#44475B]" >
         <LowAndHigh low="46,930.22" high="47,000.22" lowTitle="Today's Low" highTitle="Todays High" currentPrice="46,930.22"/>
         <LowAndHigh low="46,930.22" high="47,000.22" lowTitle="52W Low" highTitle="52W High" currentPrice="46,930.22"/>
       </div>
@@ -22,7 +22,7 @@ type iLowAndHigh={
 
 
 const LowAndHigh= memo(function LowAndHigh(prop: iLowAndHigh){
-    return <span className="flex items-center justify-start ">
+    return <span className="relative border grid justify-items-center items-center grid-cols-12 ">
     <span className="flex flex-col gap-2">
       <p>{prop.lowTitle}</p>
       <p className="" style={{ fontSize: "0.88rem" }}>
@@ -30,13 +30,13 @@ const LowAndHigh= memo(function LowAndHigh(prop: iLowAndHigh){
       </p>
     </span>
     <span
-      className="relative w-8/12 h-1 rounded-md bg-red-100 mx-10"
+      className="relative shrink w-full h-1 rounded-md bg-red-100 mx-10 col-span-8"
       style={{
         background:
           "linear-gradient(90deg, #FF4949 0%, #FF4E11 15.34%, #FC870A 30.45%, #FFAF11 48.68%, #C2CB21 62.75%, #11EB68 100.03%",
       }}
     >
-      <p className="flex flex-col items-center mt-0.5">
+      <p className="flex  flex-col items-center mt-0.5">
         <svg
           width="12"
           height="9"

@@ -6,6 +6,7 @@ import Link from "next/link";
 import Performance from "@/components/performance";
 import Fundamentals from "@/components/fundamentals";
 import Sentiment from "@/components/sentiment";
+import AnalystEstimates from "@/components/analystEstimates";
 
 
 const stocLinks = [
@@ -77,11 +78,11 @@ export default function Home() {
 
         <p className="text-dark-grey">Bitcoin </p>
       </div>
-      <div className="relative border border-red-500 ml-2  p-5  ">
+      <div className="relative  border-red-500 ml-2  p-5  ">
         <MainScreenTopBar />
         <TradingViewWidget />
       </div>
-      <div className="relative font-medium border flex p-5 text-xs justify-start gap-7 items-center">
+      <div className="relative font-medium  flex p-5 text-xs justify-start gap-7 items-center">
         {stocLinks.map((link, index) => {
           return (
             <Link
@@ -95,12 +96,13 @@ export default function Home() {
           );
         })}
       </div>
-      <div className="relative border p-5 flex flex-col gap-11 ">
+      <div className="relative w-full border p-5 flex flex-col gap-11 ">
         <Performance />
         <Fundamentals />
       </div>
-      <div className="relative border p-5">
+      <div className="relative  p-5">
         <Sentiment />
+        <AnalystEstimates />
       </div>
     </section>
   );
