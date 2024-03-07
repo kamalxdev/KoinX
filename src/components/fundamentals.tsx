@@ -39,7 +39,7 @@ const stockFundamentals = [
     value: {
       price: "$69,144.22",
       percentage: "-75.5%",
-      percentageColor: "red",
+      percentageColor: "text-[#F7324C]",
       date: "Nov 10, 2021 (about 1 year)",
     },
   },
@@ -48,7 +48,7 @@ const stockFundamentals = [
     value: {
       price: "$67.81",
       percentage: "24729.1%",
-      percentageColor: "green",
+      percentageColor: "text-[#14B079]",
       date: "Jul 06, 2013 (over 9 years)",
     },
   },
@@ -58,7 +58,7 @@ function Fundamentals() {
   return (
     <div style={{ color: "#44475B" }}>
     <TextWithInfoIcon text="Fundamentals" />
-      <div className="grid md:grid-cols-2 lg:grid-cols-2 grid-rows-subgrid   gap-16 ">
+      <div className="grid md:grid-cols-2 lg:grid-cols-2 grid-rows-subgrid   md:gap-16 ">
         <div className="text-xs">
           {stockFundamentals.map((item, index) => {
             if (index < 5) {
@@ -99,7 +99,7 @@ const StockSpan = memo(function StockSpan({ title, value }: iStockSpan) {
           <p className="text-black font-medium shrink-0">{value as string}</p>
         ) : (
           <span className="text-black font-medium flex flex-col items-end">
-            <span className="flex gap-1">{value.price + " "} <p className={`text-${value.percentageColor}-500`}>{value.percentage}</p></span>
+            <span className="flex gap-1">{value.price + " "} <p className={value.percentageColor}>{value.percentage}</p></span>
             <p style={{fontSize:"0.60rem", color: "#44475B" }}>{value.date}</p>
           </span>
         )}

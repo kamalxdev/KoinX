@@ -13,6 +13,7 @@ import Team from "@/components/team";
 import Area from "@/components/area";
 import StockSuggestion from "@/components/stockSuggestion";
 import RightBar from "@/components/rightBar";
+import Naviagtion from "@/components/naviagtion";
 
 const stockLinks = [
   {
@@ -53,14 +54,15 @@ const stockLinks = [
 ];
 export default function Home() {
   return (
-    <section className="w-full grid grid-cols-[70%,30%] grid-rows-[a] ">
-      <section className="ml-8 col-start-1 col-end-1">
-        
+   <><Naviagtion />
+    <section className="w-full grid md:grid-cols-[70%,30%] md:grid-rows-[auto] grid-cols-1 grid-rows-[auto,auto,auto] auto-rows-fr">
+      <section className="md:ml-8 col-start-1 col-end-1">
+           
         <Area classname=" ml-2 ">
           <MainScreenTopBar />
           <TradingViewWidget />
         </Area>
-        <Area classname=" font-medium  flex text-xs justify-start gap-7 items-center">
+        <Area classname="w-full overflow-scroll no-scrollbar font-medium  flex text-xs justify-start gap-7 items-center">
           {stockLinks.map((link, index) => {
             return (
               <Link
@@ -89,7 +91,7 @@ export default function Home() {
         <Area>
           <AboutStock />
         </Area>
-        <Area>
+        <Area classname="hidden md:block lg:block">
           <Tokenomics />
         </Area>
         <Area>
@@ -97,7 +99,7 @@ export default function Home() {
         </Area>
       </section>
 
-      <section className=" w-full px-8 col-span-2 col-start-1 row-start-2">
+      <section className="w-full h-fit md:px-8 md:col-span-2 md:col-start-1 md:row-start-2">
         <Area>
           <StockSuggestion title="You May Also Like" />
         </Area>
@@ -105,12 +107,11 @@ export default function Home() {
           <StockSuggestion title="Trending Coins" />
         </Area>
       </section>
-      <section className="realtive col-start-2 row-start-1 mr-6">
-          <div className="relative p-2">
+      <section className="relative w-full md:col-start-2 md:row-start-1 mr-10">
+          <div className="relative p-2 flex flex-col justify-center">
           <RightBar />
-
           </div>
       </section>
-    </section>
+    </section></>
   );
 }

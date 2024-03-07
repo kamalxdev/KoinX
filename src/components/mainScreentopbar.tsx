@@ -22,15 +22,16 @@ function MainScreenTopBar() {
       <div className="my-5">
         <span className="flex items-center">
           <p className="font-semibold text-2xl mr-10">${price.data && price.data?.bitcoin?.usd}</p>
-          <p className="text-up-green flex items-center mr-3 text-sm gap-2">
+          <p className={` flex items-center mr-3 text-sm gap-2 ${price.data && price.data?.bitcoin?.usd_24h_change >= 0 ? "text-[#14B079]" : "text-[#F7324C]"}`}>
             <svg
+            className={price.data && price.data?.bitcoin?.usd_24h_change >= 0 ? "" : "rotate-180"}
               width="9"
               height="8"
               viewBox="0 0 11 8"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path d="M5.5 0L11 8H0L5.5 0Z" fill="#14B079" />
+              <path d="M5.5 0L11 8H0L5.5 0Z" fill={price.data && price.data?.bitcoin?.usd_24h_change >= 0 ?  "#14B079":"#F7324C" } />
             </svg>
             {price.data && (price.data?.bitcoin?.usd_24h_change).toPrecision(3)}%
           </p>

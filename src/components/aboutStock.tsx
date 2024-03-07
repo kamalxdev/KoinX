@@ -30,7 +30,7 @@ function AboutStock() {
       ))}
       <span>
         <h1 className="font-semibold my-5">Already Holding Bitcoin?</h1>
-        <span className="flex gap-10">
+        <span className="flex md:gap-10 flex-wrap md:flex-nowrap">
           <Calulators
             title="Calculate your Profits"
             image="/profits.jpg"
@@ -59,7 +59,7 @@ const Paragraph = memo(function Paragraph({
   description: string;
 }) {
   return (
-    <span className="relative w-full h-auto text-sm mb-10">
+    <span className="relative w-full h-auto text-sm md:mb-10">
       <h3 className="font-semibold mb-3">{title}</h3>
       <p className="text-[#3E424A] text-xs mb-5">{description}</p>
     </span>
