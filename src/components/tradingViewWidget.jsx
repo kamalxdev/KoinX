@@ -9,33 +9,55 @@ function TradingViewWidget() {
     // Create a unique ID for each script to prevent duplication
     try {
       var scriptId = "tradingview-widget-script";
-    if (document.getElementById(scriptId)) return;
-
-    const script = document.createElement("script");
-    script.id = scriptId;
-    script.src =
-      "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
-    script.type = "text/javascript";
-    script.async = true;
-    script.innerHTML = `
+      if (document.getElementById(scriptId)) return;
+      const script = document.createElement("script");
+      script.id = scriptId;
+      script.src = "https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js";
+      script.type = "text/javascript";
+      script.async = true;
+      script.innerHTML = `
         {
+          "symbols": [
+            [
+              "BITSTAMP:BTCUSD|ALL"
+            ]
+          ],
+          "chartOnly": true,
+          "width": "100%",
+          "height": "100%",
+          "locale": "en",
+          "colorTheme": "light",
           "autosize": true,
-  "symbol": "COINBASE:BTCUSD",
-  "interval": "D",
-  "timezone": "Etc/UTC",
-  "theme": "light",
-  "style": "2",
-  "locale": "en",
-  "enable_publishing": false,
-  "gridColor": "rgba(255, 255, 255, 0)",
-  "hide_top_toolbar": true,
-  "hide_legend": true,
-  "save_image": false,
-  "calendar": false,
-  "hide_volume": true,
-  "support_host": "https://www.tradingview.com"
+          "showVolume": false,
+          "showMA": false,
+          "hideDateRanges": false,
+          "hideMarketStatus": true,
+          "hideSymbolLogo": true,
+          "scalePosition": "right",
+          "scaleMode": "Normal",
+          "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+          "fontSize": "10",
+          "noTimeScale": false,
+          "valuesTracking": "1",
+          "changeMode": "no-values",
+          "chartType": "area",
+          "maLineColor": "#2962FF",
+          "maLineWidth": 1,
+          "maLength": 9,
+          "lineWidth": 2,
+          "lineType": 0,
+          "dateRanges": [
+            "1d|1",
+            "1m|30",
+            "3m|60",
+            "12m|1D",
+            "60m|1W",
+            "all|1M"
+          ],
+          "lineColor": "rgba(24, 72, 204, 1)"
         }`;
-    container.current.appendChild(script);
+      container.current.appendChild(script);
+      
     } catch (error) {
       console.log(error);
     }
@@ -48,7 +70,7 @@ function TradingViewWidget() {
     };
   }, []);
   return (
-    <div className="h-screen max-h-96" ref={container}>
+    <div className="relative h-[30rem]" ref={container}>
       <div></div>
     </div>
   );

@@ -22,7 +22,7 @@ type iLowAndHigh={
 
 
 const LowAndHigh= memo(function LowAndHigh(prop: iLowAndHigh){
-    return <span className="relative  grid justify-items-center items-center grid-cols-12 ">
+    return <span className="relative grid justify-items-center items-center grid-cols-12 ">
     <span className="flex flex-col gap-2">
       <p>{prop.lowTitle}</p>
       <p className="" style={{ fontSize: "0.88rem" }}>
