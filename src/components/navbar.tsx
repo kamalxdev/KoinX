@@ -18,26 +18,35 @@ const navLinks = [
 
 function Navbar() {
   return (
-    <section className="flex items-center justify-between mx-10 text-xs font-semibold">
+    <section className="flex items-center justify-between mx-10 my-5 text-xs font-semibold">
       <div className="">
         <Image src="/logo.png" alt="KoinX Logo" width={60} height={60} />
       </div>
-    <div>
+      <div>
         <span className="inline-flex text-xs gap-7 mr-5">
-            {navLinks.map((link) => {
-                return <Link href={link.path} key={link.title} className="text-xs">{link.title}</Link>
-    
-            })}
+          {navLinks.map((link) => {
+            return (
+              <Link href={link.path} key={link.title} className="text-xs">
+                {link.title}
+              </Link>
+            );
+          })}
         </span>
         <span>
-                <button type="button" className="text-white px-3.5 py-1.5 rounded-md" style={{background: "linear-gradient(81.62deg, #2870EA 8.72%, #1B4AEF 85.01%)"}}>Get Started</button>
+          <button
+            type="button"
+            className="text-white px-3.5 py-1.5 rounded-md"
+            style={{
+              background:
+                "linear-gradient(81.62deg, #2870EA 8.72%, #1B4AEF 85.01%)",
+            }}
+          >
+            Get Started
+          </button>
         </span>
-    </div>
+      </div>
     </section>
   );
 }
-
-
-
 
 export default memo(Navbar);

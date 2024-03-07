@@ -32,7 +32,7 @@ function MainScreenTopBar() {
             >
               <path d="M5.5 0L11 8H0L5.5 0Z" fill="#14B079" />
             </svg>
-            {price.data && (price.data?.bitcoin?.usd_24h_change).toPrecision(4)}%
+            {price.data && (price.data?.bitcoin?.usd_24h_change).toPrecision(3)}%
           </p>
           <p className="text-xs" style={{ color: "#768396" }}>
             (24H)

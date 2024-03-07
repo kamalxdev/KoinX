@@ -10,7 +10,8 @@ import AnalystEstimates from "@/components/analystEstimates";
 import AboutStock from "@/components/aboutStock";
 import Tokenomics from "@/components/tokenomics";
 import Team from "@/components/team";
-
+import Area from "@/components/area";
+import StockSuggestion from "@/components/stockSuggestion";
 
 const stocLinks = [
   {
@@ -50,7 +51,7 @@ const stocLinks = [
   },
 ];
 export default function Home() {
-  return (
+  return (<>
     <section className="w-8/12 ml-8">
       <div className="w-3/12  my-3 text-xs text-light-grey/70 flex items-center justify-evenly">
         <p>Cryptocurrencies</p>
@@ -81,16 +82,18 @@ export default function Home() {
 
         <p className="text-dark-grey">Bitcoin </p>
       </div>
-      <div className="relative  border-red-500 ml-2  p-5  ">
-        <MainScreenTopBar />
+      <Area classname=" ml-2 ">
+      <MainScreenTopBar />
         <TradingViewWidget />
-      </div>
-      <div className="relative font-medium  flex p-5 text-xs justify-start gap-7 items-center">
-        {stocLinks.map((link, index) => {
+      </Area>
+      <Area classname="font-medium  flex text-xs justify-start gap-7 items-center">
+      {stocLinks.map((link, index) => {
           return (
             <Link
               href={link.link}
-              className={link.selected?"underline underline-offset-8 decoration-2":"" }
+              className={
+                link.selected ? "underline underline-offset-8 decoration-2" : ""
+              }
               key={index}
               style={{ color: link.selected ? "#0141CF" : "#3E424A" }}
             >
@@ -98,24 +101,35 @@ export default function Home() {
             </Link>
           );
         })}
-      </div>
-      <div className="relative w-full border p-5 flex flex-col gap-11 ">
+      </Area>
+      <Area classname="w-full  flex flex-col gap-11">
         <Performance />
         <Fundamentals />
-      </div>
-      <div className="relative  p-5">
+      </Area>
+      <Area>
         <Sentiment />
         <AnalystEstimates />
-      </div>
-      <div className="relative  p-5">
+      </Area>
+      <Area>
         <AboutStock />
-      </div>
-      <div className="relative p-5">
-        <Tokenomics />
-      </div>
-      <div className="relative p-5">
+      </Area>
+      <Area>
+      <Tokenomics />
+      </Area>
+      <Area>
         <Team />
-      </div>
+      </Area>
+      
+      
     </section>
+    <section className=" w-full px-8">
+      <Area>
+      <StockSuggestion title="You May Also Like"/>
+      </Area>
+      <Area>
+      <StockSuggestion title="Trending Coins"/>
+      </Area>
+      </section>
+    </>
   );
 }
