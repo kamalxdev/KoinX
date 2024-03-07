@@ -7,6 +7,7 @@ import Performance from "@/components/performance";
 import Fundamentals from "@/components/fundamentals";
 import Sentiment from "@/components/sentiment";
 import AnalystEstimates from "@/components/analystEstimates";
+import AboutStock from "@/components/aboutStock";
 
 
 const stocLinks = [
@@ -103,6 +104,9 @@ export default function Home() {
       <div className="relative  p-5">
         <Sentiment />
         <AnalystEstimates />
+      </div>
+      <div className="relative  p-5">
+        <AboutStock />
       </div>
     </section>
   );
