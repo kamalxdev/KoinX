@@ -116,7 +116,7 @@ const StockCard = memo(function StockCard({
   sparkline: string;
 }) {
   return (
-    <div className=" flex flex-col shrink-0 w-48  bg-white p-4 ">
+    <div className=" flex flex-col shrink-0 w-48  bg-white p-4 border rounded-md">
       <span className="flex shrink-0 items-center justify-start">
         <Image
           className="shrink-0 mr-1"
@@ -126,13 +126,13 @@ const StockCard = memo(function StockCard({
           height={10}
         />
         <p className="text-xs mr-1">{symbol.toUpperCase()}</p>
-        <p className={`text-[0.55rem] ${changePercentage >= 0 ? "text-[#14B079]" : "text-[#F7324C]"}`}>{changePercentage.toPrecision(3) + "%"}</p>
+        <p className={`text-[0.55rem] p-1 rounded-md ${changePercentage >= 0 ? "text-[#14B079] bg-[#EBF9F4]" : "text-[#F7324C] bg-[#EE68551A]"}`}>{changePercentage.toPrecision(3) + "%"}</p>
       </span>
       <span className="text-base">
         <p>{price}</p>
       </span>
       <span className="shirnk-0 mt-3 rounded-full">
-        <Image src={sparkline} alt={symbol} width={100} height={100} className="w-36 rounded-full"/>
+        <Image src={sparkline} alt={symbol} width={100} height={100} className="w-36 h-20 rounded-full"/>
       </span>
     </div>
   );

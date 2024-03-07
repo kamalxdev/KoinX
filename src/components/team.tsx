@@ -32,7 +32,7 @@ function Team() {
       <p className=" text-[#3E424A] text-sm ">
       Lorem ipsum dolor sit amet consectetur. Id consequat adipiscing arcu nibh. Eget mattis in mi integer sit egestas. Proin tempor id pretium quam. Facilisis purus convallis quam augue.
       </p>
-      <div className="md:px-10 my-10 flex flex-col gap-10">
+      <div className=" my-10 flex flex-col gap-10">
         {profiles.map((profile, index) => (
           <ProfileCard
             key={index}
@@ -59,7 +59,7 @@ const ProfileCard = memo(function ProfileCard({
   src: string;
 }) {
   return (
-    <div className="flex md:gap-10 gap-3 flex-wrap md:flex-nowrap lg:flex-nowrap items-center justify-center">
+    <div className="flex md:gap-10 gap-3 flex-wrap md:flex-nowrap lg:flex-nowrap items-center justify-center bg-[#E8F4FD] rounded-md p-5">
       <span className="flex flex-col shrink-0 " >
         <Image src={src} alt={name} width={100} height={100} className="object-cover rounded-md w-30 h-18"/>
         <span className="flex flex-col items-center">

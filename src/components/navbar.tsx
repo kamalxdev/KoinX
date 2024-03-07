@@ -22,7 +22,7 @@ function Navbar() {
   const [IsMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <>
-      <section className="flex items-center justify-between mx-10 my-5 text-xs font-semibold">
+      <section className="flex items-center justify-between px-10 py-2 text-xs font-semibold bg-white">
         <div className="flex items-center justify-between">
           <Image src="/logo.png" alt="KoinX Logo" width={70} height={70} />
         </div>

@@ -573,7 +573,7 @@ function RightBar({cards}: {cards:Array<any>}) {
           </svg>
         </Link>
       </div>
-      <div className="p-5">
+      <div className="p-5 bg-white mt-4 rounded-md">
         <h1 className="text-xl font-semibold">Trending Coins (24h)</h1>
         <span className="flex flex-col gap-3 mt-5">
             {cards?.map((coin, index) => {
@@ -607,7 +607,7 @@ const CoinCard = memo(function CoinCard({image,name,symbol,changePercentage}:{im
         <p>{name+"("+symbol.toUpperCase()+")"}</p>{" "}
       </span>
       <span>
-        <p className={` flex items-center mr-3 text-sm gap-2 ${changePercentage >= 0 ? "text-[#14B079]" : "text-[#F7324C]"}`}>
+        <p className={` flex items-center mr-3 text-sm gap-2 p-1 rounded-md ${changePercentage >= 0 ? "text-[#14B079] bg-[#EBF9F4]" : "text-[#F7324C] bg-[#EE68551A]"}`}>
           <svg
             className={`transform ${changePercentage >= 0 ? "rotate-0" : "rotate-180"}`}
             width="9"

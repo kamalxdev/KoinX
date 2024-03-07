@@ -96,8 +96,8 @@ function Coin({ params }: { params: { coin: string } }) {
             />
             {market.data[0]?.symbol && <TradingViewWidget />}
           </Area>
-          <Area classname="w-full overflow-scroll no-scrollbar font-medium  flex text-xs justify-start gap-7 items-center">
-            {stockLinks.map((link, index) => {
+          <div className="relative p-2 w-full overflow-scroll no-scrollbar font-medium  flex text-xs justify-start gap-7 items-center ">
+          {stockLinks.map((link, index) => {
                 return (
                   <Link
                     href={link.link}
@@ -113,8 +113,8 @@ function Coin({ params }: { params: { coin: string } }) {
                   </Link>
                 );
             })}
-          </Area>
-          <Area classname="w-full  flex flex-col gap-11">
+          </div>
+          <Area classname="w-full flex flex-col gap-11 ">
             <Performance
               todayLow={market?.data[0]?.low_24h}
               todayHigh={market?.data[0]?.high_24h}
@@ -144,7 +144,7 @@ function Coin({ params }: { params: { coin: string } }) {
           </Area>
         </section>
 
-        <section className="w-full h-fit md:px-8 md:col-span-2 md:col-start-1 md:row-start-2">
+        <section className="w-full h-fit md:px-8 md:col-span-2 md:col-start-1 md:row-start-2 bg-white">
           <Area>
             <StockSuggestion title="You May Also Like" cards={card} />
           </Area>
@@ -152,8 +152,8 @@ function Coin({ params }: { params: { coin: string } }) {
             <StockSuggestion title="Trending Coins" cards={card} />
           </Area>
         </section>
-        <section className="relative w-full md:col-start-2 md:row-start-1 mr-10">
-          <div className="relative p-2 flex flex-col justify-center">
+        <section className="relative w-full md:col-start-2 md:row-start-1 mr-10 ">
+          <div className="relative p-2 flex flex-col justify-center ">
             <RightBar cards={card} />
           </div>
         </section>

@@ -58,11 +58,13 @@ const Paragraph = memo(function Paragraph({
   title: string;
   description: string;
 }) {
-  return (
-    <span className="relative w-full h-auto text-sm md:mb-10">
+  return (<>
+    <span className="relative w-full h-auto text-sm ">
       <h3 className="font-semibold mb-3">{title}</h3>
       <p className="text-[#3E424A] text-xs mb-5">{description}</p>
     </span>
+    <hr className="my-5"/>
+    </>
   );
 });
 

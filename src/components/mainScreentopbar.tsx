@@ -31,7 +31,7 @@ function MainScreenTopBar(props: iProps) {
       <div className="my-5">
         <span className="flex items-center">
           <p className="font-semibold text-2xl mr-10">${props.usd}</p>
-          <p className={` flex items-center mr-3 text-sm gap-2 ${props.usd_24h_change >= 0 ? "text-[#14B079]" : "text-[#F7324C]"}`}>
+          <p className={` flex items-center mr-3 text-sm gap-2  p-1 rounded-md ${props.usd_24h_change >= 0 ? "text-[#14B079] bg-[#EBF9F4]" : "text-[#F7324C] bg-[#EE68551A]"}`}>
             <svg
             className={props.usd_24h_change >= 0 ? "" : "rotate-180"}
               width="9"

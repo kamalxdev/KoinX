@@ -51,7 +51,7 @@ function Sentiment() {
   }
   return (
     <>
-      <h1 className="mt-10 mb-4 font-semibold">Sentiment</h1>
+      <h1 className=" mb-4 font-semibold">Sentiment</h1>
       <TextWithInfoIcon text="Key Events" />
       <div className="relative group w-full">
         <div ref={caraousel} className="w-full flex gap-4 overflow-x-hidden scroll-smooth transition-transform duration-300 ease-in-out">

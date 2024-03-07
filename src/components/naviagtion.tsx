@@ -3,7 +3,7 @@ import { memo } from "react";
 
 function Navigation({coin}: {coin: string}) {
   return (
-    <div className="ml-10 my-3 text-xs text-light-grey/70 flex items-center justify-start">
+    <div className="ml-10 mt-4 text-xs text-light-grey/70 flex items-center justify-start">
     <p>Cryptocurrencies</p>
     <svg
       width="11"
