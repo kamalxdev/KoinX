@@ -1,60 +1,70 @@
 import { memo } from "react";
 import TextWithInfoIcon from "./textWithInfoIcon";
 
-const stockFundamentals = [
-  {
-    name: "Bitcoin Price",
-    value: "$85,456.36",
-  },
-  {
-    name: "24h Low / 24h High",
-    value: "$16,382.07 / $16,874.12",
-  },
-  {
-    name: "7d Low / 7d High",
-    value: "$16,382.07 / $16,874.12",
-  },
-  {
-    name: "Trading Volume",
-    value: "$23,249,202,782",
-  },
-  {
-    name: "Market Cap Rank",
-    value: "#1",
-  },
-  {
-    name: "Market Cap",
-    value: "$323,507,290,047",
-  },
-  {
-    name: "Market Cap Dominance",
-    value: "38.343%",
-  },
-  {
-    name: "Volume / Market Cap",
-    value: "0.0718",
-  },
-  {
-    name: "All-Time High",
-    value: {
-      price: "$69,144.22",
-      percentage: "-75.5%",
-      percentageColor: "text-[#F7324C]",
-      date: "Nov 10, 2021 (about 1 year)",
-    },
-  },
-  {
-    name: "All-Time Low",
-    value: {
-      price: "$67.81",
-      percentage: "24729.1%",
-      percentageColor: "text-[#14B079]",
-      date: "Jul 06, 2013 (over 9 years)",
-    },
-  },
-];
+type iProps = {
+  price: number;
+  marketCap: number;
+  todayLow: number;
+  todayHigh: number;
+  marketCapRank: number;
+  tradingVolume: number;
 
-function Fundamentals() {
+}
+
+function Fundamentals(props:iProps) {
+  const stockFundamentals = [
+    {
+      name: "Bitcoin Price",
+      value: '$'+props.price,
+    },
+    {
+      name: "24h Low / 24h High",
+      value: '$'+props.todayLow + " / " +'$'+ props.todayHigh,
+    },
+    {
+      name: "7d Low / 7d High",
+      value: "$16,382.07 / $16,874.12",
+    },
+    {
+      name: "Trading Volume",
+      value: props.tradingVolume,
+    },
+    {
+      name: "Market Cap Rank",
+      value: "#"+props.marketCapRank,
+    },
+    {
+      name: "Market Cap",
+      value: '$'+props.marketCap,
+    },
+    {
+      name: "Market Cap Dominance",
+      value: "38.343%",
+    },
+    {
+      name: "Volume / Market Cap",
+      value: "0.0718",
+    },
+    {
+      name: "All-Time High",
+      value: {
+        price: "$69,144.22",
+        percentage: "-75.5%",
+        percentageColor: "text-[#F7324C]",
+        date: "Nov 10, 2021 (about 1 year)",
+      },
+    },
+    {
+      name: "All-Time Low",
+      value: {
+        price: "$67.81",
+        percentage: "24729.1%",
+        percentageColor: "text-[#14B079]",
+        date: "Jul 06, 2013 (over 9 years)",
+      },
+    },
+  ];
+
   return (
     <div style={{ color: "#44475B" }}>
     <TextWithInfoIcon text="Fundamentals" />
@@ -81,7 +91,7 @@ function Fundamentals() {
 type iStockSpan = {
   title: string;
   value:
-    | string
+    | string | number
     | {
         price: string;
         percentage: string;
@@ -95,7 +105,7 @@ const StockSpan = memo(function StockSpan({ title, value }: iStockSpan) {
     <>
       <span className="flex items-center justify-between gap-20 flex-nowrap">
         <p className="my-4">{title}</p>
-        {typeof value === "string" ? (
+        {typeof value === "string" || typeof value === "number" ? (
           <p className="text-black font-medium shrink-0">{value as string}</p>
         ) : (
           <span className="text-black font-medium flex flex-col items-end">

@@ -1,7 +1,7 @@
 import { memo } from "react";
 
 
-function Navigation() {
+function Navigation({coin}: {coin: string}) {
   return (
     <div className="ml-10 my-3 text-xs text-light-grey/70 flex items-center justify-start">
     <p>Cryptocurrencies</p>
@@ -31,7 +31,7 @@ function Navigation() {
       </defs>
     </svg>
 
-    <p className="text-dark-grey">Bitcoin </p>
+    <p className="text-dark-grey">{coin} </p>
   </div>
   );
 }

@@ -54,7 +54,7 @@ const stockLinks = [
 ];
 export default function Home() {
   return (
-   <><Naviagtion />
+   <><Naviagtion coin="Bitcoin"/>
     <section className="w-full grid md:grid-cols-[70%,30%] md:grid-rows-[auto] grid-cols-1 grid-rows-[auto,auto,auto] auto-rows-fr">
       <section className="md:ml-8 col-start-1 col-end-1">
            

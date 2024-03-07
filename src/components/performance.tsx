@@ -1,25 +1,29 @@
 "use client";
 
-import { memo, useState } from "react";
-
-function Performance() {
+import { memo} from "react";
+type iProps = {
+  todayLow: number;
+  todayHigh: number;
+  currentPrice: number;
+}
+function Performance(props:iProps) {
   return (
     <div className="w-full">
       <h1 className="mb-5 font-semibold">Performance</h1>
       <div className="flex flex-col text-xs gap-5 text-[#44475B]" >
-        <LowAndHigh low="46,930.22" high="47,000.22" lowTitle="Today's Low" highTitle="Todays High" currentPrice="46,930.22"/>
-        <LowAndHigh low="46,930.22" high="47,000.22" lowTitle="52W Low" highTitle="52W High" currentPrice="46,930.22"/>
+        <LowAndHigh low={props.todayLow} high={props.todayHigh} lowTitle="Today's Low" highTitle="Todays High" currentPrice={props.currentPrice}/>
+        <LowAndHigh low={46930.22 }high={47000.22 }lowTitle="52W Low" highTitle="52W High" currentPrice={props.currentPrice}/>
       </div>
     </div>
   );
 }
 
 type iLowAndHigh = {
-  low: String;
-  high: String;
-  lowTitle: String;
-  highTitle: String;
-  currentPrice: String;
+  low: number;
+  high: number;
+  lowTitle: string;
+  highTitle: string;
+  currentPrice: number;
 };
 
 const LowAndHigh = memo(function LowAndHigh(prop: iLowAndHigh) {
