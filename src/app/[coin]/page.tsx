@@ -98,7 +98,6 @@ function Coin({ params }: { params: { coin: string } }) {
           </Area>
           <Area classname="w-full overflow-scroll no-scrollbar font-medium  flex text-xs justify-start gap-7 items-center">
             {stockLinks.map((link, index) => {
-              if (index < 3) {
                 return (
                   <Link
                     href={link.link}
@@ -113,7 +112,6 @@ function Coin({ params }: { params: { coin: string } }) {
                     {link.title}{" "}
                   </Link>
                 );
-              }
             })}
           </Area>
           <Area classname="w-full  flex flex-col gap-11">
