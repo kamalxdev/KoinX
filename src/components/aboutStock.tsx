@@ -44,7 +44,7 @@ function AboutStock() {
             bg="linear-gradient(135.73deg, #FF9865 0%, #EF3031 110.55%)"
           />
         </span>
-        <p className=" text-[#3E424A] text-xs mb-5">Fermentum hendrerit imperdiet nulla viverra faucibus. Sit aliquam massa vel convallis duis ac. Mi adipiscing semper scelerisque porttitor pulvinar nunc risus. Fermentum potenti iaculis lacinia congue ipsum fames amet dui. Purus ultrices tincidunt volutpat in eget. Ullamcorper dui</p>
+        <p className=" text-[#3E424A] text-xs -mt-3">Fermentum hendrerit imperdiet nulla viverra faucibus. Sit aliquam massa vel convallis duis ac. Mi adipiscing semper scelerisque porttitor pulvinar nunc risus. Fermentum potenti iaculis lacinia congue ipsum fames amet dui. Purus ultrices tincidunt volutpat in eget. Ullamcorper dui</p>
       </span>
     </div>
   );
