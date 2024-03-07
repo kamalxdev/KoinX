@@ -93,10 +93,10 @@ type iStockSpan = {
 const StockSpan = memo(function StockSpan({ title, value }: iStockSpan) {
   return (
     <>
-      <span className="flex items-center justify-between gap-20">
+      <span className="flex items-center justify-between gap-20 flex-nowrap">
         <p className="my-4">{title}</p>
         {typeof value === "string" ? (
-          <p className="text-black font-medium">{value as string}</p>
+          <p className="text-black font-medium shrink-0">{value as string}</p>
         ) : (
           <span className="text-black font-medium flex flex-col items-end">
             <span className="flex gap-1">{value.price + " "} <p className={`text-${value.percentageColor}-500`}>{value.percentage}</p></span>

@@ -9,6 +9,7 @@ import Sentiment from "@/components/sentiment";
 import AnalystEstimates from "@/components/analystEstimates";
 import AboutStock from "@/components/aboutStock";
 import Tokenomics from "@/components/tokenomics";
+import Team from "@/components/team";
 
 
 const stocLinks = [
@@ -111,6 +112,9 @@ export default function Home() {
       </div>
       <div className="relative p-5">
         <Tokenomics />
+      </div>
+      <div className="relative p-5">
+        <Team />
       </div>
     </section>
   );
