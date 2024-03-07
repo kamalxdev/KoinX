@@ -12,6 +12,7 @@ type iProps = {
   usd: number;
   usd_24h_change: number;
   inr: number;
+  market_cap_rank: number;
 }
 
 
@@ -24,7 +25,7 @@ function MainScreenTopBar(props: iProps) {
           <h1 className="font-semibold text-lg mx-2">{props.name}</h1>
           <p className="text-symbol-clr text-xs">{props.symbol?.toUpperCase()}</p>{" "}
         <span className="text-xs ml-7 text-white bg-rank-clr rounded-md p-2">
-          Rank #1
+          Rank #{props.market_cap_rank}
         </span>
         </span>
       <div className="my-5">

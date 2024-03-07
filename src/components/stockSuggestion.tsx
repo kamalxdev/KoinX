@@ -3,58 +3,7 @@
 import Image from "next/image";
 import { memo, useRef, useState } from "react";
 
-const cards = [
-  {
-    symbol: "btc",
-    changePercentage: 0.5,
-    price: 50000,
-    sparkline: "https://www.coingecko.com/coins/19059/sparkline.svg",
-  },
-  {
-    symbol: "btc",
-    changePercentage: 0.5,
-    price: 50000,
-    sparkline: "https://www.coingecko.com/coins/19059/sparkline.svg",
-  },
-  {
-    symbol: "btc",
-    changePercentage: 0.5,
-    price: 50000,
-    sparkline: "https://www.coingecko.com/coins/19059/sparkline.svg",
-  },
-  {
-    symbol: "btc",
-    changePercentage: 0.5,
-    price: 50000,
-    sparkline: "https://www.coingecko.com/coins/19059/sparkline.svg",
-  },
-  {
-    symbol: "btc",
-    changePercentage: 0.5,
-    price: 50000,
-    sparkline: "https://www.coingecko.com/coins/19059/sparkline.svg",
-  },
-  {
-    symbol: "btc",
-    changePercentage: 0.5,
-    price: 50000,
-    sparkline: "https://www.coingecko.com/coins/19059/sparkline.svg",
-  },
-  {
-    symbol: "btc",
-    changePercentage: 0.5,
-    price: 50000,
-    sparkline: "https://www.coingecko.com/coins/19059/sparkline.svg",
-  },
-  {
-    symbol: "btc",
-    changePercentage: 0.5,
-    price: 50000,
-    sparkline: "https://www.coingecko.com/coins/19059/sparkline.svg",
-  },
-];
-
-function StockSuggestion({ title }: { title: String }) {
+function StockSuggestion({ title,cards }: { title: String,cards:Array<any> }) {
   const caraousel = useRef<HTMLDivElement>(null);
   const [isLeftDisabled, setIsLeftDisabled] = useState(true);
   const [isRightDisabled, setIsRightDisabled] = useState(false);
@@ -112,14 +61,14 @@ function StockSuggestion({ title }: { title: String }) {
           ref={caraousel}
           className="w-full flex gap-4 overflow-x-hidden scroll-smooth transition-transform duration-300 ease-in-out"
         >
-          {cards.map((card, index) => {
+          {cards?.map((card:any, index:number) => {
             return (
               <StockCard
                 key={index}
                 symbol={card.symbol}
                 changePercentage={card.changePercentage}
                 price={card.price}
-                image={`https://assets.coingecko.com/coins/images/19059/standard/scallop.PNG?169651850`}
+                image={card.image}
                 sparkline={card.sparkline}
               />
             );
@@ -148,11 +97,6 @@ function StockSuggestion({ title }: { title: String }) {
               </svg>
             </div>
           </button>
-        {/* <div className="">
-          
-
-          
-        </div> */}
       </div>
     </>
   );
@@ -182,12 +126,12 @@ const StockCard = memo(function StockCard({
           height={10}
         />
         <p className="text-xs mr-1">{symbol.toUpperCase()}</p>
-        <p className="text-[0.55rem]">{changePercentage.toPrecision(3) + "%"}</p>
+        <p className={`text-[0.55rem] ${changePercentage >= 0 ? "text-[#14B079]" : "text-[#F7324C]"}`}>{changePercentage.toPrecision(3) + "%"}</p>
       </span>
       <span className="text-base">
-        <p>${price}</p>
+        <p>{price}</p>
       </span>
-      <span className="shirnk-0">
+      <span className="shirnk-0 mt-3">
         <Image src={sparkline} alt={symbol} width={100} height={100} className="w-36"/>
       </span>
     </div>

@@ -3,31 +3,10 @@ import Link from "next/link";
 import { memo } from "react";
 
 
-const TrendingCoins = [
-    {
-        symbol: "btc",
-        name: "Bitcoin",
-        changePercentage: 0.5,
-        image:"https://assets.coingecko.com/coins/images/19059/standard/scallop.PNG?169651850"
-    },
-    {
-        symbol: "eth",
-        name: "Etherium",
-        changePercentage: 2.5,
-        image:"https://assets.coingecko.com/coins/images/19059/standard/scallop.PNG?169651850"
-    },
-    {
-        symbol: "matic",
-        name: "Polygon",
-        changePercentage: 6.55,
-        image:"https://assets.coingecko.com/coins/images/19059/standard/scallop.PNG?169651850"
-    },
-]
 
 
 
-
-function RightBar() {
+function RightBar({cards}: {cards:Array<any>}) {
   return (
     <>
       <div className="bg-[#0052FE] text-white rounded-lg p-10 flex flex-col items-center justify-center text-center text-xl ">
@@ -597,15 +576,17 @@ function RightBar() {
       <div className="p-5">
         <h1 className="text-xl font-semibold">Trending Coins (24h)</h1>
         <span className="flex flex-col gap-3 mt-5">
-            {TrendingCoins.map((coin, index) => (
-                <CoinCard
+            {cards?.map((coin, index) => {
+                if(index<3){
+                  return <CoinCard
                     key={index}
                     image={coin.image}
                     name={coin.name}
                     symbol={coin.symbol}
                     changePercentage={coin.changePercentage}
                     />
-            ))}
+                }
+              })}
         </span>
       </div>
     </>
@@ -626,15 +607,16 @@ const CoinCard = memo(function CoinCard({image,name,symbol,changePercentage}:{im
         <p>{name+"("+symbol.toUpperCase()+")"}</p>{" "}
       </span>
       <span>
-        <p className="text-up-green flex items-center mr-3 text-sm gap-2">
+        <p className={` flex items-center mr-3 text-sm gap-2 ${changePercentage >= 0 ? "text-[#14B079]" : "text-[#F7324C]"}`}>
           <svg
+            className={`transform ${changePercentage >= 0 ? "rotate-0" : "rotate-180"}`}
             width="9"
             height="8"
             viewBox="0 0 11 8"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path d="M5.5 0L11 8H0L5.5 0Z" fill="#14B079" />
+            <path d="M5.5 0L11 8H0L5.5 0Z" fill={changePercentage >= 0 ? "#14B079" : "#F7324C"} />
           </svg>
           {changePercentage.toPrecision(3)}%
         </p>

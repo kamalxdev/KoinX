@@ -63,8 +63,22 @@ function Coin({ params }: { params: { coin: string } }) {
   const price = useFetchData(
     `https://api.coingecko.com/api/v3/simple/price?ids=${coin}&vs_currencies=inr,usd&x-cg-demo-api-key=CG-vZfVMwsnwxcFsiXyQCsWV4Nn&include_24hr_change=true`
   );
+  const trending = useFetchData(
+    `https://api.coingecko.com/api/v3/search/trending?x-cg-demo-api-key=CG-vZfVMwsnwxcFsiXyQCsWV4Nn`
+  );
+  const card = trending.data?.coins.map((coin: any) => {
+    return {
+      symbol: coin?.item?.symbol,
+      changePercentage: coin?.item?.data.price_change_percentage_24h.usd,
+      price: coin?.item?.data.price,
+      sparkline: coin?.item?.data.sparkline,
+      image: coin?.item?.small,
+      name: coin?.item?.name,
+    };
+  });
+
   if (market.loading || price.loading) return <p>Loading...</p>;
-  if (market.error || price.error) return <p> Try after 1 minute</p>;
+  //   if (market.error || price.error) return <p> Try after 1 minute</p>;
   return (
     <>
       <Naviagtion coin={market?.data && market.data[0]?.name} />
@@ -72,36 +86,50 @@ function Coin({ params }: { params: { coin: string } }) {
         <section className="md:ml-8 col-start-1 col-end-1">
           <Area classname=" ml-2 ">
             <MainScreenTopBar
-              image={market.data[0]?.image}
-              name={market.data[0]?.name}
-              symbol={market.data[0]?.symbol}
-              usd={price.data[coin]?.usd}
-              inr={price.data[coin]?.inr}
-              usd_24h_change={price.data[coin]?.usd_24h_change}
+              image={market?.data[0]?.image}
+              name={market?.data[0]?.name}
+              symbol={market?.data[0]?.symbol}
+              usd={price?.data[coin]?.usd}
+              inr={price?.data[coin]?.inr}
+              usd_24h_change={price?.data[coin]?.usd_24h_change}
+              market_cap_rank={market?.data[0]?.market_cap_rank}
             />
-            <TradingViewWidget />
+            {market.data[0]?.symbol && <TradingViewWidget />}
           </Area>
           <Area classname="w-full overflow-scroll no-scrollbar font-medium  flex text-xs justify-start gap-7 items-center">
             {stockLinks.map((link, index) => {
-              return (
-                <Link
-                  href={link.link}
-                  className={
-                    link.selected
-                      ? "underline underline-offset-8 decoration-2"
-                      : ""
-                  }
-                  key={index}
-                  style={{ color: link.selected ? "#0141CF" : "#3E424A" }}
-                >
-                  {link.title}{" "}
-                </Link>
-              );
+              if (index < 3) {
+                return (
+                  <Link
+                    href={link.link}
+                    className={
+                      link.selected
+                        ? "underline underline-offset-8 decoration-2"
+                        : ""
+                    }
+                    key={index}
+                    style={{ color: link.selected ? "#0141CF" : "#3E424A" }}
+                  >
+                    {link.title}{" "}
+                  </Link>
+                );
+              }
             })}
           </Area>
           <Area classname="w-full  flex flex-col gap-11">
-            <Performance todayLow={market.data[0]?.low_24h} todayHigh={market.data[0]?.high_24h} currentPrice={price.data[coin]?.usd}/>
-            <Fundamentals todayLow={market.data[0]?.low_24h} todayHigh={market.data[0]?.high_24h} price={price.data[coin]?.usd} marketCap={market.data[0]?.market_cap} marketCapRank={market.data[0]?.market_cap_rank} tradingVolume={(market.data[0]?.total_volume)}/>
+            <Performance
+              todayLow={market?.data[0]?.low_24h}
+              todayHigh={market?.data[0]?.high_24h}
+              currentPrice={price?.data[coin]?.usd}
+            />
+            <Fundamentals
+              todayLow={market?.data[0]?.low_24h}
+              todayHigh={market?.data[0]?.high_24h}
+              price={price?.data[coin]?.usd}
+              marketCap={market?.data[0]?.market_cap}
+              marketCapRank={market?.data[0]?.market_cap_rank}
+              tradingVolume={market?.data[0]?.total_volume}
+            />
           </Area>
           <Area>
             <Sentiment />
@@ -120,15 +148,15 @@ function Coin({ params }: { params: { coin: string } }) {
 
         <section className="w-full h-fit md:px-8 md:col-span-2 md:col-start-1 md:row-start-2">
           <Area>
-            <StockSuggestion title="You May Also Like" />
+            <StockSuggestion title="You May Also Like" cards={card} />
           </Area>
           <Area>
-            <StockSuggestion title="Trending Coins" />
+            <StockSuggestion title="Trending Coins" cards={card} />
           </Area>
         </section>
         <section className="relative w-full md:col-start-2 md:row-start-1 mr-10">
           <div className="relative p-2 flex flex-col justify-center">
-            <RightBar />
+            <RightBar cards={card} />
           </div>
         </section>
       </section>
